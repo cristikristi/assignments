@@ -1,0 +1,13 @@
+<div >
+  <ol>
+    <li ng-repeat="item in menu.items">
+      <button ng-click="menu.onRemove({index :$index})" class="btn btn-primary float-right">Don't want this one!</button>
+        <div class="form-group">
+      {{item.name}},
+      ({{item.short_name}}),
+      {{item.description}}
+        </div>
+    </li>
+  </ol>
+  <div class="error" ng-if="menu.items.length ===0" ng-animate=" 'animate' ">"Nothing found"</div>
+</div>
