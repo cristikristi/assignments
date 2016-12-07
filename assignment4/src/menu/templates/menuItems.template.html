@@ -1,0 +1,10 @@
+<div><a ui-sref="home">Home</a> &lt; <a ui-sref="categories">Categories</a> &lt; <span>{{menuItems.categoryName}}</span></div>
+<h3>Menu Items </h3>
+
+
+<table>
+  <tr>
+    <td><items items="menuItems.items"></items></td>
+    <td class="details"><ui-view></ui-view></td>
+  </tr>
+</table>
