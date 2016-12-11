@@ -1,0 +1,95 @@
+<div class="user-regForm">
+
+
+<h1>Registration Form</h1>
+
+    <fieldset>
+      <legend>Newsletter and Promotions Signup</legend>
+      <form name='regForm' novalidate>
+
+        <div class="user">
+          <input type="text" name="firstName" placeholder="First Name *"
+            ng-model="regCtrl.user.firstName"
+            required
+            minlength="2"
+            ng-maxlength="15">
+            <span class="hidden-xs hidden-sm"
+              ng-if="(regForm.firstName.$error.minlength || regForm.firstName.$error.required) && regForm.firstName.$touched">
+              First Name must be at least 2 characters long
+            </span>
+            <span class="hidden-xs hidden-sm" ng-if="regForm.firstName.$error.maxlength && regForm.firstName.$touched">
+              First Name must not be longer than 15 characters
+            </span>
+          </div>
+          <span class="visible-xs visible-sm"
+            ng-if="(regForm.firstName.$error.minlength || regForm.firstName.$error.required) && regForm.firstName.$touched">
+            First Name must be at least 2 characters long
+          </span>
+          <span class="visible-xs visible-sm" ng-if="regForm.firstName.$error.maxlength && regForm.firstName.$touched">
+            First Name must not be longer than 15 characters
+          </span>
+          <div class="user">
+            <input type="text" name="lastName" placeholder="Last Name *"
+              ng-model="regCtrl.user.lastName"
+              required
+              minlength="2"
+              ng-maxlength="20">
+              <span class="hidden-xs hidden-sm"
+                ng-if="(regForm.lastName.$error.minlength || regForm.lastName.$error.required) && regForm.lastName.$touched">
+                Last Name must be at least 2 characters long
+              </span>
+              <span class="hidden-xs hidden-sm" ng-if="regForm.lastName.$error.maxlength && regForm.lastName.$touched">
+                Last Name must not be longer than 20 characters
+              </span>
+          </div>
+          <span class="visible-xs visible-sm"
+            ng-if="(regForm.lastName.$error.minlength || regForm.lastName.$error.required) && regForm.lastName.$touched">
+            Last Name must be at least 2 characters long
+          </span>
+          <span class="visible-xs visible-sm" ng-if="regForm.lastName.$error.maxlength && regForm.lastName.$touched">
+            Last Name must not be longer than 20 characters
+          </span>
+          <div class="user">
+            <input type="email" name="email" placeholder="Email *"
+              ng-model="regCtrl.user.email"
+              required>
+              <span class="hidden-xs hidden-sm" ng-if="regForm.email.$invalid && regForm.email.$touched">
+                Must be a valid email address: handle@domain format
+              </span>
+          </div>
+          <span class="visible-xs visible-sm" ng-if="regForm.email.$invalid && regForm.email.$touched">
+            Must be a valid email address: handle@domain format
+          </span>
+          <div class="user">
+            <input type="text" name="phone" placeholder="Phone ###-###-####"
+              ng-model="regCtrl.user.phone"
+              pattern="(\d{3})-(\d{3})-(\d{4})">
+              <span class="hidden-xs hidden-sm" ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+                Phone must be in the format ###-###-####.
+              </span>
+        </div>
+        <span class="visible-xs visible-sm" ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+          Phone must be in the format ###-###-####.
+        </span>
+        <div class="user">
+          <input type="text" name="menuNumber" placeholder="Menu Number"
+            ng-model="regCtrl.user.menuNumber">
+            <span class="hidden-xs hidden-sm" ng-if="regCtrl.warningMsg">
+              No such menu number exists
+            </span>
+        </div>
+        <span class="visible-xs visible-sm" ng-if="regCtrl.warningMsg">
+          No such menu number exists
+        </span>
+
+        <button
+          ng-disabled="regForm.$invalid"
+          ng-click="regCtrl.submit()">Submit</button>
+      </form>
+      <span ng-if="!regCtrl.completed" > * required fields</span>
+    </fieldset>
+
+    <div id="info" ng-if="regCtrl.completed">
+      Your information has been saved
+  </div>
+</div>
