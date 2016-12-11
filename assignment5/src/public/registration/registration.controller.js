@@ -19,7 +19,7 @@ function RegistrationController(RegistrationService, MenuService) {
       userInfo.lastName = reg.user.lastName;
       userInfo.email = reg.user.email;
       userInfo.phone = reg.user.phone;
-      userInfo.menuNumber = reg.user.menuNumber;
+      userInfo.menuNumber = reg.user.menuNumber.toUpperCase();
 
       if(userInfo.menuNumber){
         MenuService.getMenu(userInfo.menuNumber).then(function (response) {
