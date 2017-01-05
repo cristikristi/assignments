@@ -39,7 +39,7 @@ public class Percolation {
 		{
 			return;
 		}
-		int siteIndex = getUfIndex(row, col); 
+		int siteIndex = getIndex(row, col); 
 		this.sitesArray[siteIndex] = 1;
 
 
@@ -55,7 +55,7 @@ public class Percolation {
 		{
 			if (isOpen(row+1, col))
 			{
-				uf.union(siteIndex, getUfIndex(row+1, col));
+				uf.union(siteIndex, getIndex(row+1, col));
 			}
 		}
 		// union up
@@ -63,7 +63,7 @@ public class Percolation {
 		{
 			if (isOpen(row-1, col))
 			{
-				uf.union(siteIndex, getUfIndex(row-1, col));
+				uf.union(siteIndex, getIndex(row-1, col));
 			}
 		}
 		// union left 
@@ -71,7 +71,7 @@ public class Percolation {
 		{
 			if (isOpen(row, col-1))
 			{
-				uf.union(siteIndex, getUfIndex(row, col-1));
+				uf.union(siteIndex, getIndex(row, col-1));
 			}
 		}
 		// union right
@@ -79,7 +79,7 @@ public class Percolation {
 		{
 			if (isOpen(row, col+1))
 			{
-				uf.union(siteIndex, getUfIndex(row, col+1));
+				uf.union(siteIndex, getIndex(row, col+1));
 			}
 		}
 
@@ -89,7 +89,7 @@ public class Percolation {
 
 		validParam(row, col);
 
-		if(sitesArray[getUfIndex(row, col)] == 1){
+		if(sitesArray[getIndex(row, col)] == 1){
 			return true;
 		}else 
 			return false;
@@ -100,7 +100,7 @@ public class Percolation {
 		if (!isOpen(row, col))
 			return false;
 
-		if(uf.connected(topLink, getUfIndex( row, col))){
+		if(uf.connected(topLink, getIndex( row, col))){
 			return true;
 		}else {
 			return false;
@@ -119,14 +119,14 @@ public class Percolation {
 	public boolean percolates(){
 
 		for(int i=0;i<n;i++){
-			if(uf.connected(topLink, uf.find(getUfIndex(n, i)))){
+			if(uf.connected(topLink, uf.find(getIndex(n, i)))){
 				return true;
 			}
 		}
 		return false;
 	}
 
-	private int getUfIndex(int i, int j){
+	private int getIndex(int i, int j){
 		return n*(i - 1) + j - 1;
 	}
 
